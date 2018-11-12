@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="scripts/w3.css">
+<script src="scripts/angular.js"></script>
+<body ng-app="myApp" ng-controller="userCtrl">
+
+<div class="w3-container">
+
+<h3>ATG ONE STOP CLICK</h3>
+
+<table class="w3-table w3-bordered w3-striped">
+  
+  <tr>
+    <td>
+      Environment 
+    </td>
+	<td>
+		<select ng-model="environments" ng-options="envr.environments for envr in envs">
+		</select>
+	</td>
+	<td>
+	<a href="https://wiki.kfplc.com/" target="_blank">Wiki link</a>
+	</td>
+	<td>
+	For Better Dyn Admin.... First click on this link to install 
+<a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank">Chrome Tamper monkey App</a> then click to 
+<a href="https://raw.githubusercontent.com/jc7447/bda/master/bda.user.js" target="_blank">Install the script</a> 
+
+	</td>
+  </tr>
+  <tr>
+	<td>
+      Persona 
+    </td>
+	<td>
+		<select ng-model="personas" ng-options="opt.personas for opt in options">
+		</select>
+	</td>
+	<td>
+	<a href="https://jira.kfplc.com/" target="_blank">Jira link</a>
+	</td>
+	<td>
+	<a href="https://kingfisher.service-now.com/navpage.do" target="_blank">Kingfisher Service-now</a> 
+	</td>
+    
+  </tr>
+  <tr>
+	<td>
+      Link Type 
+    </td>
+	<td>
+		<select ng-model="linkType" ng-options="lnk.linkType for lnk in links">
+		</select>
+	</td>
+	<td>
+	<a href="https://outlook.office.com/owa/" target="_blank">Outlook Webmail</a>
+	</td>
+    <td>
+	<a href="http://unxs0328.gha.kfplc.com/" target="_blank">Tivoli TWS link</a> 
+	</td>
+  </tr>
+</table>
+<br>
+<button class="w3-btn w3-green w3-ripple" ng-click="prepareLink(environments.id, personas.id, linkType.id)">&#9998; GO</button>
+
+
+</div>
+<br />
+<div ng-hide="puttytext"> {{ finalLink }} 
+<br />
+Copied above text to clipboard. Please goto run and paste it (ctrl+v) there and press Enter
+</div>
+
+<br />
+<br />
+<table>
+<tr>
+<td>
+<div> 
+	<div ng-repeat="jenkins in jenkins_links">
+	<a ng-href="{{jenkins.jenkins_link}}" target="_blank">{{jenkins.jenkins_name}}</a><br />
+	</div>
+</div>
+</td>
+<td>
+<div ng-hide="repos"> 
+	<div ng-repeat="reposit in repositories">
+	<a ng-href="{{reposit.reposit_link}}" target="_blank">{{reposit.reposit_name}}</a><br />
+	</div>
+</div>
+</td>
+</tr>
+</table>
+
+
+<!--
+<div ng-repeat="(key, dataSet) in envs">
+
+
+   <div>{{key}}</div> 
+   <div ng-repeat="(key2,value) in dataSet">   
+       Key: {{key2}} <br> Value:{{value}}
+   </div> 
+
+</div>
+-->
+<div ng-repeat="(key, dataSet) in myJson">
+
+
+   <div>Key: {{key}}</div> 
+   <div>   
+      Value:{{dataSet}}
+   </div> 
+
+</div>
+<script src= "atg-oneclick.js"></script>
+<script src= "ngClipboard.js"></script> 
+
+</body>
+</html>
